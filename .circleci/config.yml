@@ -1,0 +1,21 @@
+workflows:
+  version: 2
+  build-deploy:
+    jobs:
+      - test
+
+version: 2
+jobs:
+  test:
+    docker:
+      - image: circleci/python:2-jessie
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - run:
+          name: move tests
+          command: |
+            mkdir -p reports/junit
+            mv *.xml reports/junit/
+      - store_test_results:
+          path: reports
