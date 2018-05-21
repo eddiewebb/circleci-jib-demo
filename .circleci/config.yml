@@ -42,10 +42,7 @@ jobs:
           command: |
 
             cd _build/test/logs
-            rm RELEASES
-            rm CURRENT
-            rm epoch
-            rm index.html
+            rm LOG*
 
 
       - store_test_results:
