@@ -7,6 +7,10 @@ workflows:
 version: 2
 jobs:
   test:
+    docker:
+      - image: aeternity/builder
+        user: builder
+    working_directory: ~/epoch
     parallelism: 2
     docker:
       - image: circleci/python:2-jessie
