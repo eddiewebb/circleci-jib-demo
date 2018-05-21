@@ -31,10 +31,17 @@ jobs:
       - run:
           name: sumarize tests
           command: |
-            grep -r '.xml\|.junit\|.cucumber' .
+            echo "contain DOT EXTENSION"
+            grep -r '\.xml\|\.junit\|\.cucumber' .
+            echo "named DOT EXTENSION"
             find . -type f -name '*.xml'
             find . -type f -name '*.junit'
             find . -type f -name '*.cucumber'
+      - run:
+          name: remove conflicts file
+          command: |
+            rm _build/test/logs/ctlog.html
+            rm _build/test/logs/variables-epoch_ct@localhost
 
       - store_test_results:
           path: _build/test/logs
