@@ -18,8 +18,12 @@ jobs:
       - run:
           name: move tests
           command: |
+            export CIRCLE_TOKEN=${CCI_DOT_COM_TOKEN}
             mkdir -p _build/test/logs
-            mv tesresults${CIRCLE_NODE_INDEX}.xml _build/test/logs/junit.xml
+            cd _build/test/logs
+            curl "https://circleci.com/api/v1.1/project/github/aeternity/epoch/13616/artifacts?circle-token=$CIRCLE_TOKEN" | grep -o 'https://[^"]*' > artifacts.txt
+            <artifacts.txt xargs -P4 -I % wget %?circle-token=$CIRCLE_TOKEN
+            rm -f artifacts.txt
       - store_test_results:
           path: _build/test/logs
       - store_artifacts:
