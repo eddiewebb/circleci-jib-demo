@@ -29,23 +29,12 @@ jobs:
             find . -type f -name "*\?*" -exec ../../../.circleci/removeQuery.sh {} \;
             rm -f artifacts.txt
       - run:
-          name: sumarize tests
+          name: move tests
           command: |
-            echo "contain DOT EXTENSION"
-            grep -r '\.xml\|\.junit\|\.cucumber' .
-            echo "named DOT EXTENSION"
-            find . -type f -name '*.xml'
-            find . -type f -name '*.junit'
-            find . -type f -name '*.cucumber'
-      - run:
-          name: remove conflicts file
-          command: |
-
-            cd _build/test/logs
-            rm LOG*
-
+            mkdir _builds/test/reports
+            mv _build/test/logs/junit.xml _build/test/reports/
 
       - store_test_results:
-          path: _build/test/logs
+          path: _build/test/reports
       - store_artifacts:
           path: _build/test/logs
