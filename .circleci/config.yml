@@ -8,9 +8,11 @@ version: 2
 jobs:
   test:
     docker:
-      - image: aeternity/builder
-        user: builder
-    working_directory: ~/epoch
+      - image: circleci/python:2-jessie 
+    #docker:
+    #  - image: aeternity/builder
+    #    user: builder
+    #working_directory: ~/epoch
     parallelism: 2
     working_directory: ~/repo
     steps:
