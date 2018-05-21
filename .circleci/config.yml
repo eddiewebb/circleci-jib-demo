@@ -40,6 +40,8 @@ jobs:
       - run:
           name: remove conflicts file
           command: |
+
+            cd _build/test/logs
             rm RELEASES
             rm CURRENT
             rm epoch
