@@ -23,7 +23,7 @@ jobs:
             export CIRCLE_TOKEN=${CCI_DOT_COM_TOKEN}
             mkdir -p _build/test/logs
             cd _build/test/logs
-            curl "https://circleci.com/api/v1.1/project/github/aeternity/epoch/13616/artifacts?circle-token=$CIRCLE_TOKEN" | grep -o 'https://[^"]*/'${CIRCLE_NODE_INDEX}'/[^"]*' > artifacts.txt
+            curl "https://circleci.com/api/v1.1/project/github/aeternity/epoch/13616/artifacts?circle-token=$CIRCLE_TOKEN" | grep 'junit' | grep -o 'https://[^"]*/'${CIRCLE_NODE_INDEX}'/[^"]*' > artifacts.txt
             <artifacts.txt xargs -P4 -I % wget %?circle-token=$CIRCLE_TOKEN
             # Remove query string from a static resource.
             find . -type f -name "*\?*" -exec ../../../.circleci/removeQuery.sh {} \;
