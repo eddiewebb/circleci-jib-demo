@@ -20,3 +20,5 @@ jobs:
             mv tesresults${CIRCLE_NODE_INDEX}.xml reports/junit/junit.xml
       - store_test_results:
           path: reports
+      - store_artifacts:
+          path: reports
