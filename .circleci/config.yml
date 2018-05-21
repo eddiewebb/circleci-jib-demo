@@ -31,7 +31,7 @@ jobs:
       - run:
           name: move tests
           command: |
-            mkdir _builds/test/reports
+            mkdir _build/test/reports
             mv _build/test/logs/junit.xml _build/test/reports/
 
       - store_test_results:
