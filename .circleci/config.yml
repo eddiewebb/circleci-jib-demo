@@ -12,8 +12,6 @@ jobs:
         user: builder
     working_directory: ~/epoch
     parallelism: 2
-    docker:
-      - image: circleci/python:2-jessie
     working_directory: ~/repo
     steps:
       - checkout
