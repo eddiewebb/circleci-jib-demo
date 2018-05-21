@@ -28,6 +28,14 @@ jobs:
             # Remove query string from a static resource.
             find . -type f -name "*\?*" -exec ../../../.circleci/removeQuery.sh {} \;
             rm -f artifacts.txt
+      - run:
+          name: sumarize tests
+          command: |
+            grep -r '.xml\|.junit\|.cucumber' .
+            find . -type f -name '*.xml'
+            find . -type f -name '*.junit'
+            find . -type f -name '*.cucumber'
+
       - store_test_results:
           path: _build/test/logs
       - store_artifacts:
