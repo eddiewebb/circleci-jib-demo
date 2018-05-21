@@ -40,7 +40,10 @@ jobs:
       - run:
           name: remove conflicts file
           command: |
-            rm LOG*
+            rm RELEASES
+            rm CURRENT
+            rm epoch
+            rm index.html
 
 
       - store_test_results:
