@@ -16,9 +16,9 @@ jobs:
       - run:
           name: move tests
           command: |
-            mkdir -p reports/junit
-            mv tesresults${CIRCLE_NODE_INDEX}.xml reports/junit/junit.xml
+            mkdir -p _build/test/logs
+            mv tesresults${CIRCLE_NODE_INDEX}.xml _build/test/logs/junit.xml
       - store_test_results:
-          path: reports
+          path: _build/test/logs
       - store_artifacts:
-          path: reports
+          path: _build/test/logs
