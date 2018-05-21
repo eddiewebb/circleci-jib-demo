@@ -7,6 +7,7 @@ workflows:
 version: 2
 jobs:
   test:
+    parallelism: 2
     docker:
       - image: circleci/python:2-jessie
     working_directory: ~/repo
@@ -16,6 +17,6 @@ jobs:
           name: move tests
           command: |
             mkdir -p reports/junit
-            mv *.xml reports/junit/
+            mv tesresults${CIRCLE_NODE_INDEX}.xml reports/junit/junit.xml
       - store_test_results:
           path: reports
