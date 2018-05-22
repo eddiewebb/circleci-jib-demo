@@ -18,16 +18,9 @@ jobs:
     steps:
       - checkout
       - run:
-          name: move tests
+          name: stage tests
           command: |
-            export CIRCLE_TOKEN=${CCI_DOT_COM_TOKEN}
-            mkdir -p _build/test/logs
-            cd _build/test/logs
-            curl "https://circleci.com/api/v1.1/project/github/aeternity/epoch/13616/artifacts?circle-token=$CIRCLE_TOKEN" | grep -o 'https://[^"]*/'${CIRCLE_NODE_INDEX}'/[^"]*' > artifacts.txt
-            <artifacts.txt xargs -P4 -I % wget %?circle-token=$CIRCLE_TOKEN
-            # Remove query string from a static resource.
-            find . -type f -name "*\?*" -exec ../../../.circleci/removeQuery.sh {} \;
-            rm -f artifacts.txt
+            curl https://gist.githubusercontent.com/eddiewebb/9bda93977659d954d705ca623ff452af/raw/b664f251ae96efc5a4811d1a22bc66e99c6c233a/downloadArtifacts.sh | bash -s aeternity/epoch 13259
       - run:
           name: move tests
           command: |
