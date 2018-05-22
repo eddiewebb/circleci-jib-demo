@@ -22,7 +22,7 @@ jobs:
           command: |
             export CIRCLE_API_TOKEN=${CCI_DOT_COM_TOKEN}
             curl https://gist.githubusercontent.com/eddiewebb/9bda93977659d954d705ca623ff452af/raw/downloadArtifacts.sh | bash -s aeternity/epoch 13259 github 200
-            mv CIRCLE_NODE_INDEX/home/builder/epoch/* .
+            mv $CIRCLE_NODE_INDEX/home/builder/epoch/* .
       - run:
           name: move tests
           command: |
