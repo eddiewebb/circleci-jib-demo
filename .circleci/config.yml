@@ -18,6 +18,6 @@ jobs:
     steps:
       - checkout
       - save_cache:
-          key: source-cache
+          key: source-cache-{{ .Branch }}-{{ .Revision }}
           paths:
             - ".git"
