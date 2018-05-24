@@ -51,7 +51,6 @@ jobs:
                 echo "Merge fail, conflicts. Please merge latest form master manually"
                 exit 1
               fi
-
               git status
               git log -n2
             else
