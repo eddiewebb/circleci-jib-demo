@@ -5,7 +5,7 @@ workflows:
       - isolated
       - merged:
           requires: [isolated]
-          filter:
+          filters:
             branches:
               ignore: [master]
 
