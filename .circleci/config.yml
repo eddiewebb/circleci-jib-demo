@@ -51,11 +51,9 @@ jobs:
                 echo "Merge fail, conflicts. Please merge latest form master manually"
                 exit 1
               fi
+
+              git status
+              git log -n2
             else
               echo "Not a PR, skipping merge"
             fi
-      - run:
-          name: Git info
-          command: |
-            git info
-            git log -n2
