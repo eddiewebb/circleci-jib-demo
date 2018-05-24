@@ -40,7 +40,7 @@ jobs:
               # Now on master, attempty merging in PR branch
               git config --global user.email "circleci@circle.com"
               git config --global user.name "CircleCI"
-              git pull
+              git pull --no-edit
               if [ $? -ne 0 ];then
                 echo "Merge fail, conflicts. Please merge latest form master manually"
                 exit 1
