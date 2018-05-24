@@ -32,7 +32,7 @@ jobs:
       - run:
           name: Merge latest from master
           command: |
-            set | grep CIRCLE
+            #set | grep CIRCLE
             if [ "x" != "x${CIRCLE_PULL_REQUEST}" ];then
               echo "Build is part of a PR, try merged build"
               # in case of forked repos, this must build in upstream with "build forked PRS" enabledin settings
