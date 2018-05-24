@@ -38,7 +38,9 @@ jobs:
               # in case of forked repos, this must build in upstream with "build forked PRS" enabledin settings
               git checkout master
               # Now on master, attempty merging in PR branch
-              git merge origin/${CIRCLE_BRANCH}
+              git config --global user.email "circleci@circle.com"
+              git config --global user.name "CircleCI"
+              git pull
               if [ $? -ne 0 ];then
                 echo "Merge fail, conflicts. Please merge latest form master manually"
                 exit 1
