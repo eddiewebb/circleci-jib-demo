@@ -2,11 +2,16 @@ workflows:
   version: 2
   build-deploy:
     jobs:
-      - test
+      - isolated
+      - merged:
+          requires: [isolated]
+          filter:
+            branches:
+              ignore: [master]
 
 version: 2
 jobs:
-  test:
+  isolated:
     docker:
       - image: circleci/python:2-jessie
     #docker:
@@ -21,3 +26,34 @@ jobs:
           key: source-cache-{{ .Branch }}-{{ .Revision }}
           paths:
             - ".git"
+      - step: echo "passed"
+
+  merged:
+    docker:
+      - image: circleci/python:2-jessie
+    #docker:
+    #  - image: aeternity/builder
+    #    user: builder
+    #working_directory: ~/epoch
+    parallelism: 2
+    working_directory: ~/repo
+    steps:
+      - step:
+          name: Merge latest from master
+          command: |
+            if [ "x" != "${CIRCLE_REPOSITORY_URL}" ];then
+              echo "Build is part of a PR, try merged build"
+              git clone git@github.com:${CIRCLE_PR_USERNAME}/${CIRCLE_PR_REPONAME}.git
+              git merge ${CIRCLE_BRANCH}
+              if [ $? -ne 0 ];then
+                echo "Merge fail, conflicts. Please merge latest form master manually"
+                exit 1
+              fi
+            else
+              echo "Not a PR, skipping merge"
+            fi
+      - step:
+          name: Git info
+          command: |
+            git info
+            git log -n2
