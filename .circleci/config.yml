@@ -26,7 +26,7 @@ jobs:
           key: source-cache-{{ .Branch }}-{{ .Revision }}
           paths:
             - ".git"
-      - step: echo "passed"
+      - run: echo "passed"
 
   merged:
     docker:
@@ -38,7 +38,7 @@ jobs:
     parallelism: 2
     working_directory: ~/repo
     steps:
-      - step:
+      - run:
           name: Merge latest from master
           command: |
             if [ "x" != "${CIRCLE_REPOSITORY_URL}" ];then
@@ -52,7 +52,7 @@ jobs:
             else
               echo "Not a PR, skipping merge"
             fi
-      - step:
+      - run:
           name: Git info
           command: |
             git info
