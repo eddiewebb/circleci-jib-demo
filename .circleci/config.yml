@@ -1,32 +1,11 @@
-version: 2
+version: 2.1
+
+orbs:
+  hello: circleci/hello-build@0.0.7
+
+
 
 workflows:
-  version: 2
-  workspace:
+  a_workflow:
     jobs:
-      - assets_1
-      - assets_2
-      - test_both:
-          requires:
-            - assets_2
-            - assets_1
-
-jobs:
-  assets_1:
-    docker: 
-      - image: circleci/python:2-jessie
-    steps:
-      - checkout
-      - run: |
-          mkdir output_1
-          echo "hello world" > output_1/message_1.txt
-      - persist_to_workspace:
-          root: output_1
-          paths:
-           - message_1.txt
-      - run: |
-          sudo pip install awscli
-          aws s3 cp output_1/message_1.txt s3://not-writable/
-          mkdir output_1
-          echo "hello world" > output_1/message_1.txt
-
+      - hello/hello-build
