@@ -11,3 +11,4 @@ foo
 boo
 boo
 race
+race
