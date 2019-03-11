@@ -15,7 +15,7 @@ jobs:
     working_directory: ~/repo
     steps:
       - checkout
-      - run: sleep 10 && echo "hi JIRA"
+      - run: sleep 5 && echo "hi JIRA"
       - dark/notify
   failing:
     docker:
