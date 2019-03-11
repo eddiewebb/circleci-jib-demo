@@ -1,0 +1,19 @@
+version: 2.1
+workflows:
+  build-deploy:
+    jobs:
+      - test-locally
+
+orbs:
+  dark: eddiewebb/burps@dev:eddie
+
+jobs:
+  test-locally:
+    docker:
+      - image: circleci/node:10
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - run: echo "hi JIRA"
+      - dark/notify
+
