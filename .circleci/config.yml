@@ -9,14 +9,6 @@ orbs:
   dark: eddiewebb/burps@dev:eddie
 
 jobs:
-  test-locally:
-    docker:
-      - image: circleci/node:10
-    working_directory: ~/repo
-    steps:
-      - checkout
-      - run: sleep 5 && echo "hi JIRA"
-      - dark/notify
   failing:
     docker:
       - image: circleci/node:10
@@ -24,5 +16,13 @@ jobs:
     steps:
       - checkout
       - run: exit 1
+      - dark/notify
+  test-locally:
+    docker:
+      - image: circleci/node:10
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - run: sleep 5 && echo "hi JIRA"
       - dark/notify
 
