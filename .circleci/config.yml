@@ -20,7 +20,7 @@ jobs:
       - checkout
       - run: exit 1
       - dark/notify
-      
+
   ensure-fail-first: #this job just ensutes that passing job get a higher build number
     docker:
       - image: circleci/node:10
@@ -37,4 +37,3 @@ jobs:
       - checkout
       - run: echo "hi JIRA"
       - dark/notify
-
