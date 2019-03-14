@@ -20,6 +20,7 @@ jobs:
       - checkout
       - run: exit 1
       - dark/notify
+      
   ensure-fail-first: #this job just ensutes that passing job get a higher build number
     docker:
       - image: circleci/node:10
@@ -27,6 +28,7 @@ jobs:
     steps:
       - checkout
       - run: sleep 5
+
   passing:
     docker:
       - image: circleci/node:10
