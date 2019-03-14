@@ -2,7 +2,7 @@ version: 2.1
 workflows:
   build-deploy:
     jobs:
-      - failing
+      - fail-fast
       - ensure-fail-first
       - passing:
           requires:
