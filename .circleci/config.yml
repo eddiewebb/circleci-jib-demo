@@ -9,7 +9,7 @@ workflows:
           - ensure-fail-first
 
 orbs:
-  dark: eddiewebb/burps@dev:eddie
+  dark: eddiewebb/burps@dev:eddie-proxy
 
 jobs:
   fail-fast:
