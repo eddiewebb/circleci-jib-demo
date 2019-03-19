@@ -9,7 +9,7 @@ workflows:
           - ensure-fail-first
 
 orbs:
-  dark: eddiewebb/burps@dev:eddie-proxy
+  jira: circleci/jira@dev:token-only-b0878a77ffee82e4fa2fd516db50a58fcb830562
 
 jobs:
   fail-fast:
@@ -19,7 +19,7 @@ jobs:
     steps:
       - checkout
       - run: exit 1
-      - dark/notify
+      - jira/notify
 
   ensure-fail-first: #this job just ensutes that job-name job get a higher build number
     docker:
@@ -36,4 +36,4 @@ jobs:
     steps:
       - checkout
       - run: echo "hi JIRA"
-      - dark/notify
+      - jira/notify
