@@ -11,8 +11,6 @@ jobs:
     steps:
       - checkout
       - run: exit 1
-      - jira/notify
-
 notify:
   webhooks:
   - url: https://enhom4nqsjx3m.x.pipedream.net
