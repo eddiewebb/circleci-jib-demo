@@ -10,6 +10,9 @@ jobs:
     working_directory: ~/repo
     steps:
       - checkout
+      - run:  cat /proc/cpuinfo
+      - run: lscpu
+      - run: free -m
       - run: exit 0
 notify:
   webhooks:
