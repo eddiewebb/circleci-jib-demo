@@ -16,4 +16,5 @@ jobs:
           local_port: '9001'
           target_host: google.com
           target_port: '80'
-      - run: curl http://localhost:9001
+      - run: |
+          curl -H "Host: google.com" http://localhost:9001 -v
