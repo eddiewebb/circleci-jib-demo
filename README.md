@@ -1,3 +1,3 @@
 # Jib Demo with CircleCI
 
-Please visit <Blog Post Link TBD> 
+Please visit https://circleci.com/blog/dockerizing-java-apps-with-circleci-and-jib/
